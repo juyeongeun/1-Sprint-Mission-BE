@@ -15,7 +15,7 @@ export async function getProductList(keyword, page = 1, pageSize = 100) {
         console.log('성공');
         console.log(response.data);
     } catch (error) {
-        console.error('Get ProductList Error', error);
+        console.error('Get ProductList Error: ', error);
     }
 }
 
@@ -26,7 +26,7 @@ export async function getProduct(id) {
         console.log('성공');
         console.log(response.data);
     } catch (error) {
-        console.error(error);
+        console.error('Get Product Error: ', error);
     }
 }
 
@@ -43,7 +43,7 @@ export async function createProduct(name, description, price, tags, images) {
         console.log(response.data);
         console.log('성공');
     } catch (error) {
-        console.error(error);
+        console.error('POST Product Error: ', error);
     }
 }
 
@@ -54,7 +54,7 @@ export async function patchProduct(id, updates) {
         console.log('성공');
         console.log(response.data);
     } catch (error) {
-        console.error(error);
+        console.error('PATCH Error: ', error);
     }
 }
 
@@ -65,6 +65,6 @@ export async function deleteProduct(id) {
         console.log('성공적으로 삭제됨');
         console.log(response.data);
     } catch (error) {
-        console.error(error);
+        console.error('DELETE Error: ', error);
     }
 }

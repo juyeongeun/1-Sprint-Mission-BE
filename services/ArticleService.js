@@ -37,7 +37,7 @@ export function getArticle(id) {
             console.log('성공');
             console.log(data);
         })
-        .catch(error => console.error(error));
+        .catch(error => console.error(`GET Error fetching a article: `, error));
 }
 
 //post a new article
@@ -63,7 +63,7 @@ export function createArticle(title, content, image) {
             console.log('성공');
             console.log(data);
         })
-        .catch(error => console.error(error));
+        .catch(error => console.error(`POST Error: `, error));
 }
 
 // // Patch an article
@@ -86,7 +86,7 @@ export function patchArticle(id, updates) {
             console.log('성공');
             console.log(data);
         })
-        .catch(error => console.error(error));
+        .catch(error => console.error(`PATCH Error: `, error));
 }
 
 //Delete an article
@@ -102,5 +102,5 @@ export function deleteArticle(id) {
         .then(data => {
             console.log('성공적으로 삭제됨');
         })
-        .catch(error => console.error(error));
+        .catch(error => console.error(`DELETE Error:`, error));
 }
