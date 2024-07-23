@@ -1,7 +1,7 @@
 const baseUrl = 'https://sprint-mission-api.vercel.app/articles';
 
 // Get articles keyword List
-export function getArticleList(keyword, page =1, pageSize=100) {
+export function getArticleList(keyword, page = 1, pageSize = 100) {
     const url = new URL(baseUrl);
     const params = {
         page,
@@ -37,11 +37,11 @@ export function getArticle(id) {
             console.log('성공');
             console.log(data);
         })
-        .catch(() => console.error('게시글을 찾을 수 없음'));
+        .catch(error => console.error(error));
 }
 
 //post a new article
-export function postArticle(title, content, image) {
+export function createArticle(title, content, image) {
     fetch(baseUrl, {
             method: 'POST',
             headers: {
@@ -63,18 +63,18 @@ export function postArticle(title, content, image) {
             console.log('성공');
             console.log(data);
         })
-        .catch(() => console.error('유효성 검사 오류'));
+        .catch(error => console.error(error));
 }
 
 // // Patch an article
 export function patchArticle(id, updates) {
     fetch(`${baseUrl}/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(updates)
-    })
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updates)
+        })
         .then(async response => {
             if (!response.ok) {
                 const errorInfo = await response.json();
@@ -86,14 +86,14 @@ export function patchArticle(id, updates) {
             console.log('성공');
             console.log(data);
         })
-        .catch(() => console.error('게시글을 찾을 수 없음'));
+        .catch(error => console.error(error));
 }
 
 //Delete an article
 export function deleteArticle(id) {
-    fetch(`${baseUrl}/${id}`, { 
-        method: 'DELETE' 
-    })
+    fetch(`${baseUrl}/${id}`, {
+            method: 'DELETE'
+        })
         .then(response => {
             if (!response.ok) {
                 throw new Error(`DELETE Error: ${response.statusText}`);
@@ -102,5 +102,5 @@ export function deleteArticle(id) {
         .then(data => {
             console.log('성공적으로 삭제됨');
         })
-        .catch(() => console.error('게시글을 찾을 수 없음'));
+        .catch(error => console.error(error));
 }

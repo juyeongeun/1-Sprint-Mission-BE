@@ -3,15 +3,19 @@ import axios from 'axios';
 const baseUrl = 'https://sprint-mission-api.vercel.app/products';
 
 // Get products List
-export async function getProductList(keyword, page=1, pageSize=100) {
+export async function getProductList(keyword, page = 1, pageSize = 100) {
     try {
         const response = await axios.get(baseUrl, {
-            params: { page, pageSize, keyword }
+            params: {
+                page,
+                pageSize,
+                keyword
+            }
         });
         console.log('성공');
         console.log(response.data);
-    }catch(error) {
-        console.error('Get ProductList Error',error);
+    } catch (error) {
+        console.error('Get ProductList Error', error);
     }
 }
 
@@ -21,13 +25,13 @@ export async function getProduct(id) {
         const response = await axios.get(`${baseUrl}/${id}`);
         console.log('성공');
         console.log(response.data);
-    }catch(error) {
-        console.error('상품을 찾을 수 없음');
+    } catch (error) {
+        console.error(error);
     }
 }
 
 // Post a product
-export async function postProduct(name,  description, price, tags, images) {
+export async function createProduct(name, description, price, tags, images) {
     try {
         const response = await axios.post(baseUrl, {
             name,
@@ -38,8 +42,8 @@ export async function postProduct(name,  description, price, tags, images) {
         });
         console.log(response.data);
         console.log('성공');
-    }catch(error) {
-        console.error('유효성 검사 오류');
+    } catch (error) {
+        console.error(error);
     }
 }
 
@@ -50,7 +54,7 @@ export async function patchProduct(id, updates) {
         console.log('성공');
         console.log(response.data);
     } catch (error) {
-        console.error('상품을 찾을 수 없음');
+        console.error(error);
     }
 }
 
@@ -61,6 +65,6 @@ export async function deleteProduct(id) {
         console.log('성공적으로 삭제됨');
         console.log(response.data);
     } catch (error) {
-        console.error('상품을 찾을 수 없음');
+        console.error(error);
     }
 }
